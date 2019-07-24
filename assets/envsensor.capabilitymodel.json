@@ -1,0 +1,209 @@
+{
+  "@id": "urn:bugbash0725:sample_device:1",
+  "@type": "CapabilityModel",
+  "displayName": "My Sample Capability Model",
+  "implements": [
+    {
+      "schema": 
+      {
+        "@id": "urn:azureiot:DeviceManagement:DeviceInformation:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "Device Information"
+        },
+        "contents": [
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:manufacturer:1",
+            "@type": "Property",
+            "comment": "Company name of the device manufacturer. This could be the same as the name of the original equipment manufacturer (OEM). Ex. Contoso.",
+            "displayName": {
+              "en": "Manufacturer"
+            },
+            "name": "manufacturer",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:model:1",
+            "@type": "Property",
+            "comment": "Device model name or ID. Ex. Surface Book 2.",
+            "displayName": {
+              "en": "Device model"
+            },
+            "name": "model",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:swVersion:1",
+            "@type": "Property",
+            "comment": "Version of the software on your device. This could be the version of your firmware. Ex. 1.3.45",
+            "displayName": {
+              "en": "Software version"
+            },
+            "name": "swVersion",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:osName:1",
+            "@type": "Property",
+            "comment": "Name of the operating system on the device. Ex. Windows 10 IoT Core.",
+            "displayName": {
+              "en": "Operating system name"
+            },
+            "name": "osName",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:processorArchitecture:1",
+            "@type": "Property",
+            "comment": "Architecture of the processor on the device. Ex. x64 or ARM.",
+            "displayName": {
+              "en": "Processor architecture"
+            },
+            "name": "processorArchitecture",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:processorManufacturer:1",
+            "@type": "Property",
+            "comment": "Name of the manufacturer of the processor on the device. Ex. Intel.",
+            "displayName": {
+              "en": "Processor manufacturer"
+            },
+            "name": "processorManufacturer",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:totalStorage:1",
+            "@type": "Property",
+            "comment": "Total available storage on the device in kilobytes. Ex. 2048000 kilobytes.",
+            "displayName": {
+              "en": "Total storage"
+            },
+            "name": "totalStorage",
+            "displayUnit": {
+              "en": "kilobytes"
+            },
+            "schema": "long"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:totalMemory:1",
+            "@type": "Property",
+            "comment": "Total available memory on the device in kilobytes. Ex. 256000 kilobytes.",
+            "displayName": {
+              "en": "Total memory"
+            },
+            "name": "totalMemory",
+            "displayUnit": {
+              "en": "kilobytes"
+            },
+            "schema": "long"
+          }
+        ],
+        "@context": [
+          "http://azureiot.com/v1/contexts/interface.json"
+        ]  
+      },
+      "name": "deviceinfo"
+    },
+    {
+      "schema": 
+      {
+        "@id": "urn:bugbash0725:EnvironmentalSensor:1",
+        "@type": "Interface",
+        "displayName": "Environmental Sensor",
+        "description": "Provides functionality to report temperature, humidity. Provides telemetry, commands and read-write properties",
+        "comment": "Requires temperature and humidity sensors.",
+        "contents": [
+          {
+            "@type": "Property",
+            "displayName": "Device State",
+            "description": "The state of the device. Two states online/offline are available.",
+            "name": "state",
+            "schema": "boolean"
+          },
+          {
+            "@type": "Property",
+            "displayName": "Customer Name",
+            "description": "The name of the customer currently operating the device.",
+            "name": "name",
+            "schema": "string",
+            "writable": true
+          },
+          {
+            "@type": "Property",
+            "displayName": "Brightness Level",
+            "description": "The brightness level for the light on the device. Can be specified as 1 (high), 2 (medium), 3 (low)",
+            "name": "brightness",
+            "writable": true,
+            "schema": "long"
+          },
+          {
+            "@type": [
+              "Telemetry",
+              "SemanticType/Temperature"
+            ],
+            "description": "Current temperature on the device",
+            "displayName": "Temperature",
+            "name": "temp",
+            "schema": "double",
+            "unit": "Units/Temperature/fahrenheit"
+          },
+          {
+            "@type": [
+              "Telemetry",
+              "SemanticType/Humidity"
+            ],
+            "description": "Current humidity on the device",
+            "displayName": "Humidity",
+            "name": "humid",
+            "schema": "double",
+            "unit": "Units/Humidity/percent"
+          },
+          {
+            "@type": "Command",
+            "description": "This command will begin blinking the LED for given time interval.",
+            "name": "blink",
+            "commandType": "synchronous",
+            "request": {
+              "name": "interval",
+              "schema": "long"
+            },
+            "response": {
+              "name": "blinkResponse",
+              "schema": {
+                "@type": "Object",
+                "fields": [
+                  {
+                    "name": "description",
+                    "schema": "string"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "@type": "Command",
+            "name": "turnon",
+            "comment": "This Commands will turn-on the LED light on the device.",
+            "commandType": "synchronous"
+          },
+          {
+            "@type": "Command",
+            "name": "turnoff",
+            "comment": "This Commands will turn-off the LED light on the device.",
+            "commandType": "synchronous"
+          },
+          {
+            "@type": "Command",
+            "name": "rundiagnostics",
+            "comment": "This command initiates a diagnostics run.  This will take time and is implemented as an asynchronous command",
+            "commandType": "asynchronous"
+          }
+        ],
+        "@context": "http://azureiot.com/v1/contexts/Interface.json"
+      },
+      "name": "sensor"
+    }
+  ],
+  "@context": "http://azureiot.com/v1/contexts/CapabilityModel.json"
+}
