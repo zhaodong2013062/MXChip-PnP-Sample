@@ -55,7 +55,7 @@
 2. Type "arduino" in the search bar and click "Edit in settings.json".  
    ![editjson](assets/editjson.png)
 
-3. Add `"https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/pnp/package_azureboard_index.json"` to `"arduino.additionalUrls"`.  
+3. Add `"https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/pnp/package_mxchip_board_index.json"` to `"arduino.additionalUrls"`.  
    ![url](assets/url.png)
 
 4. Open up the command palette by using **Ctrl+Shift+P**, and invoke the **Arduino: Board Manager** command.  
