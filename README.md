@@ -63,7 +63,7 @@
 5. In the board manager page, click **Refresh Package Indexes**.   
    ![refresh](assets/refresh.png)
 
-6. After the refresh has completed successfully, type **AZ3166** in the search bar. You should see the MXChip board appear. Select version 1.9.2, then hit **Install**.  
+6. After the refresh has completed successfully, type **AZ3166** in the search bar. You should see the MXChip board appear. Select version 1.9.3, then hit **Install**.  
    ![install](assets/install.png)
 
 # Compile and Upload Code
