@@ -104,7 +104,9 @@ bool Sensor_Property_GetState()
 bool Sensor_Property_NameCallback(char* name)
 {
     LogInfo("Name property new value: %s", name);
-    textOutDevKitScreen(3, name, 0);
+    char text[20];
+    sprintf(text, "CX: %s", name);
+    textOutDevKitScreen(3, text, 0);
     return true;
 }
 
@@ -156,9 +158,9 @@ DIGITALTWIN_COMMAND_RESULT Sensor_Command_Turnoff(unsigned int* statusCode)
 DIGITALTWIN_COMMAND_RESULT Sensor_Command_Rundiagnostics()
 {
     char responseString[Payload_Buffer_Size] = "Run rundiagnostics command successfully";
-
-    SensorInterface_Rundiagnostics_UpdateStatus(SENSOR_RUNDIAGNOSTICS_COMPLETED, (const char*)responseString, 200);
     textOutDevKitScreen(3, "Calibrating...", 0);
+    SensorInterface_Rundiagnostics_UpdateStatus(SENSOR_RUNDIAGNOSTICS_COMPLETED, (const char*)responseString, 200);
+    textOutDevKitScreen(3, "Calibrated!", 0);
     LogInfo("Execute 'rundiagnostics' command successfully");
     return DIGITALTWIN_COMMAND_OK;
 }

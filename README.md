@@ -30,14 +30,21 @@
 3. At the **Create a Capability Model** step, choose **Import Capability Model** and select the capability model JSON from the [prerequisites](#Prerequisites). You should see the capability model appear with all the appropriate capabilities.   
    ![imported-dcm](assets/imported-dcm.png)
 
-4. From the nav bar on the left, click **Views**, then **Generate Default Views**. The default view panes will be generated, which will allow you to view telemetry and edit properties. 
+4. From the nav bar on the left, click **Views**, then **Generate Default Views**. The default view panes will be generated, which will allow you to view telemetry and send commands.
    ![generate-views](assets/generate-views.png)
 
-5. **Publish** the template using the button on the upper right.
+5. Add another view for **Editing Device and Cloud Data**.  
+   ![form-view](assets/form-view.png)
 
-6. Go to **Device Explorer** and create a new device with the name "sampledevkit" under the template you just created. After device creation is completed, click on the device.
+6. Drag the **Brightness Level** and **Customer Name** onto the canvas, then hit **Save**.  
+   ![form-view](assets/form-view.png)
 
-7. On the upper right hand corner of the device page, click **Connect** and note the **Scope Id**, **Device ID**, and **Primary Key** of the device. You will need these later.
+7. **Publish** the template using the button on the upper right.  
+   ![brightness-name](assets/brightness-name.png)
+
+8. Go to **Device Explorer** and create a new device with the name "sampledevkit" under the template you just created. After device creation is completed, click on the device.
+
+9. On the upper right hand corner of the device page, click **Connect** and note the **Scope Id**, **Device ID**, and **Primary Key** of the device. You will need these later.
    ![connect](assets/connect.png)
 
 
@@ -84,3 +91,4 @@ On the **Overview** pane in your device in IoT Central, you should see temperatu
 - Execute the **Run Diagnostics** command and a fun message will display on the OLED.
 - Turn the User LED on and off.
 - Change the brightness of the RGB LED (input an integer from 1-255, ignore the tooltip in Central)
+- Note: Blink is not working.
