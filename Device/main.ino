@@ -32,13 +32,13 @@ const IOTHUB_SECURITY_TYPE secureDeviceTypeForIotHub = IOTHUB_SECURITY_TYPE_SYMM
 static const char *globalDpsEndpoint = "global.azure-devices-provisioning.net";
 
 // TODO: Specify DPS scope ID if you intend on using DPS / IoT Central.
-static const char *dpsIdScope = "0ne000690B2";
+static const char *dpsIdScope = "SCOPEID";
 
 // TODO: Specify symmetric keys if you intend on using DPS / IoT Central and symmetric key based auth.
-static const char *sasKey = "pFRBFgtTirJSjj/+E6xMiDtM1rNHNeV1BU6tX0eD56E=";
+static const char *sasKey = "DEVICEKEY";
 
 // TODO: specify your device ID
-static const char *registrationId = "zzhsense";
+static const char *registrationId = "DEVICEID";
 
 // TODO: Fill in DIGITALTWIN_DEVICE_CAPABILITY_MODEL_ID and DIGITALTWIN_DEVICE_CAPABILITY_MODEL_INLINE_DATA if you indend on using IoT Central.
 #define DIGITALTWIN_DEVICE_CAPABILITY_MODEL_ID "urn:bugbash0725:sample_device:1"
